@@ -9,10 +9,10 @@ class Admin_Class
 
 	public function __construct()
 	{ 
-        $host_name='localhost';
-		$user_name='root';
-		$password='';
-		$db_name='tms_db';
+        $host_name='sql5.freesqldatabase.com';
+		$user_name='sql5790042';
+		$password='zVL6JVinWS';
+		$db_name='sql5790042';
 
 		try{
 			$connection=new PDO("mysql:host={$host_name}; dbname={$db_name}", $user_name,  $password);

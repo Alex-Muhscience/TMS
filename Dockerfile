@@ -16,19 +16,18 @@ RUN a2enmod rewrite
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy composer files first to leverage Docker cache
-COPY composer.json composer.lock ./
-
-# Install composer dependencies
+# Install Composer globally
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer install --no-dev --optimize-autoloader
 
-# Copy project files
+# Copy project files (including composer.json)
 COPY . .
 
-# Set permissions
+# Install PHP dependencies (optimize for production)
+RUN composer install --no-dev --optimize-autoloader || echo "Composer install failed. Check composer.json."
+
+# Set permissions (resilient to missing storage dir)
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html/storage
+    && [ -d /var/www/html/storage ] && chmod -R 755 /var/www/html/storage || echo "No storage directory, skipping chmod"
 
 # Expose port 80
 EXPOSE 80
