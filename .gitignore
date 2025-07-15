@@ -1,0 +1,38 @@
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Dependency directories
+/vendor/
+/node_modules/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# System files
+Thumbs.db
+.DS_Store
+
+# Log files
+*.log
+
+# Cache and temporary files
+/tmp/
+/cache/
+*.cache
+
+# Composer files (except lock file)
+/composer.phar
+/composer.lock
+
+# Development assets
+/assets/css/*.map
+/assets/js/*.map
+
+# Custom ignores for this project
+.DS_Store
+*.sql
