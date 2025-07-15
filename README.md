@@ -31,6 +31,33 @@ A comprehensive web application for managing tasks, user accounts, and administr
 6. Configure email settings in `.env` file (see Configuration section)
 7. Access the application via `http://localhost/tms`
 
+## Docker Deployment
+
+To deploy using Docker:
+
+1. Ensure Docker and Docker Compose are installed
+2. Copy `.env.example` to `.env` and configure:
+   - Database credentials
+   - Email settings
+3. Build and start containers:
+
+   ```bash
+   docker-compose up -d --build
+   ```
+
+4. Access the application at `http://localhost:8000`
+5. To stop containers:
+
+   ```bash
+   docker-compose down
+   ```
+
+### Notes
+
+- The database will persist in a Docker volume
+- First run may take time to initialize MySQL
+- Check logs with `docker-compose logs`
+
 ## Configuration
 
 The system requires the following:
